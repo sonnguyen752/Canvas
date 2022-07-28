@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Di chuyển Hình Chữ Nhật</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="400" style="border: 1px green solid;">
+    </canvas>
+    <script>
+    let ctx = document.getElementById("myCanvas").getContext("2d");
+    let rectXPosition = 0;
+    let rectYPosition = 0;
+    let rectWidth = 200;
+    let rectHeight = 100;
+    function drawRect() {
+        ctx.beginPath();
+        ctx.fillStyle = "blue";
+        ctx.fillRect(rectXPosition, rectYPosition, rectWidth, rectHeight);
+    }
+    let yDistance = 1;
+    function moveRect() {
+        ctx.clearRect(rectXPosition, rectYPosition, rectWidth, rectHeight);
+        if (rectYPosition < 0 || rectYPosition + rectHeight >= 400) {
+            yDistance = -yDistance;
+        } rectYPosition+=yDistance;
+        drawRect();
+    }
+    setInterval(moveRect,10);
+    </script>
+</body>
+</html>
